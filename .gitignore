@@ -11,6 +11,7 @@
 
 # Visual Studio 2015 cache/options directory
 .vs/
+*.user
 
 # MSTest test Results
 [Tt]est[Rr]esult*/

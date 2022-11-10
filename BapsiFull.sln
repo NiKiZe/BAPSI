@@ -5,6 +5,8 @@ VisualStudioVersion = 17.3.32922.545
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BapsiNet", "BapsiNet\BapsiNet.csproj", "{E9A09795-3B24-4EEC-875A-6678C6C7E2E3}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BapsiDummyServer", "BapsiDummyServer\BapsiDummyServer.csproj", "{7396BDA0-8063-4C7B-96C3-472C24264AB7}"
+EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BapsiNet.Test", "BapsiNet.Test\BapsiNet.Test.csproj", "{C4C679E4-7438-49B6-8D95-BFBD6DAB3B5B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A7D0103D-F2FC-4AC5-AA22-A1DA027F8FE4}"
@@ -22,6 +24,10 @@ Global
 		{E9A09795-3B24-4EEC-875A-6678C6C7E2E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E9A09795-3B24-4EEC-875A-6678C6C7E2E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E9A09795-3B24-4EEC-875A-6678C6C7E2E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7396BDA0-8063-4C7B-96C3-472C24264AB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7396BDA0-8063-4C7B-96C3-472C24264AB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7396BDA0-8063-4C7B-96C3-472C24264AB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7396BDA0-8063-4C7B-96C3-472C24264AB7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C4C679E4-7438-49B6-8D95-BFBD6DAB3B5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C4C679E4-7438-49B6-8D95-BFBD6DAB3B5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C4C679E4-7438-49B6-8D95-BFBD6DAB3B5B}.Release|Any CPU.ActiveCfg = Release|Any CPU

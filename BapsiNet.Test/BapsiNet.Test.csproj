@@ -19,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BapsiDummyServer\BapsiDummyServer.csproj" />
     <ProjectReference Include="..\BapsiNet\BapsiNet.csproj" />
   </ItemGroup>
 

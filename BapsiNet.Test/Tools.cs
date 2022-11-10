@@ -30,4 +30,16 @@ public static class Tools
             }
         }
     }
+
+    /// <summary>Writes hex stream</summary>
+    /// <param name="outwriter">Example: <see cref="Console.Out"/></param>
+    /// <param name="byteArray"></param>
+    public static void WriteHexLine(this TextWriter outWriter, ReadOnlySpan<byte> byteArray)
+    {
+        foreach (var b in byteArray)
+        {
+            outWriter.Write($"{(int)b:x2} "); // hex + space
+        }
+        outWriter.WriteLine();
+    }
 }

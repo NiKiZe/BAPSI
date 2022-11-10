@@ -20,11 +20,7 @@ public class Rc4VectorTests
         var rc4 = new RC4(key);
         rc4.Apply(data);
 
-        foreach (var b in data)
-        {
-            Console.Write($"{(int)b:x2} "); // hex + space
-        }
-        Console.WriteLine();
+        Console.Out.WriteHexLine(data);
         Assert.That(data, Is.EqualTo(expectedResult));
     }
 }

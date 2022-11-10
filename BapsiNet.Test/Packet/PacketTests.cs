@@ -88,6 +88,9 @@ public class PacketTests
         Console.Out.WriteHexLine(bytes.Span);
         var p = DecodeTest(bytes);
 
+        if (p.DataItems == null)
+            throw new NullReferenceException(nameof(p.DataItems));
+
         var newP = new BapsiPacket(p.DataClassAndType, p.DataItems.Value.Span);
         Console.WriteLine(newP.ToString());
         Assert.That(newP.Start0, Is.EqualTo(p.Start0), nameof(p.Start0));

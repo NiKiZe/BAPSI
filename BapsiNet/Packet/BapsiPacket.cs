@@ -37,9 +37,11 @@ public class BapsiPacket
 
     /// <summary>P:27 Data type 1B  E:Yes H:Yes</summary>
     /// <remarks>Use <see cref="DataClassAndType"/> instead</remarks>
+#pragma warning disable IDE0052 // Keep unused private member as documentation
     private byte DataType => _dataPart == null ? (byte)0x00 : _dataPart.Value.Slice(1, 1).Span[0];
+#pragma warning restore IDE0052
 
-    /// <summary>P:26-27 Data class 1B, Data type 1B  E:Yes H:Yes</summary>
+    /// <summary>P:26-27 <see cref="DataClass"/> 1B, <see cref="DataType"/> 1B  E:Yes H:Yes</summary>
     public DataClassType DataClassAndType => _dataPart == null ? 
         DataClassType.Undefined :
         (DataClassType)((_dataPart.Value[..2].Span[0] << 8) | _dataPart.Value[..2].Span[1]);
@@ -195,6 +197,8 @@ public class BapsiPacket
     {
         if (DataItems == null)
             Cipher(key);
+        if (DataItems == null)
+            throw new NullReferenceException($"{nameof(DataItems)} is null");
         var p = new BapsiPacket(DataClassAndType, DataItems.Value.Span);
         return p;
     }

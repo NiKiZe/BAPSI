@@ -1,5 +1,4 @@
-﻿using NUnit.Framework;
-using BapsiNet.Packet;
+﻿using BapsiNet.Packet;
 
 namespace BapsiNet.Test.Packet;
 

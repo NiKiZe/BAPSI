@@ -1,5 +1,4 @@
-﻿using NUnit.Framework;
-
+﻿
 namespace BapsiNet.Test.Rc4;
 
 [TestFixture]

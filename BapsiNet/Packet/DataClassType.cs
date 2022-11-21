@@ -72,6 +72,7 @@ public enum DataClassType : ushort
     DataStreamStatusCtlChan = _DataStream | ApiCommonH.DATASTREAM_TYPE_STATUS_CTLCHAN,
 
     _SingleResponse = ApiCommonH.MCLASS_RESPONSES << 8,
+    /// <summary>Data should be string of <see cref="ResponseAckType"/></summary>
     SingleResponseAck = _SingleResponse | ApiCommonH.RESPONSES_TYPE_ACKNOWLEDGE,
     SingleResponseEndOfData = _SingleResponse | ApiCommonH.RESPONSES_TYPE_END_OF_DATA,
     SingleResponseServerResponse = _SingleResponse | ApiCommonH.RESPONSES_TYPE_SERVER_RESPONS,

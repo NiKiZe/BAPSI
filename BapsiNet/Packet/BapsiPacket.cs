@@ -2,6 +2,8 @@
 using System.Security.Cryptography;
 using System.Text;
 
+using BapsiNet.Command;
+
 namespace BapsiNet.Packet;
 
 public class BapsiPacket
@@ -68,14 +70,6 @@ public class BapsiPacket
             throw new ArgumentOutOfRangeException(nameof(packet), packet, "Non expected SOH1");
         if (Version != 1)
             throw new ArgumentOutOfRangeException(nameof(packet), packet, "Non expected Version");
-    }
-
-    /// <summary>
-    /// Generate new data packet, similar to BAPSIDLL PutBuffer using string
-    /// </summary>
-    public BapsiPacket(DataClassType dataClassAndType, string data)
-        : this(dataClassAndType, DataEncoding.GetBytes(data))
-    {
     }
 
     /// <summary>
@@ -201,6 +195,18 @@ public class BapsiPacket
         return p;
     }
 
+    public BapsiCommand GetCommand()
+    {
+        var dct = DataClassAndType;
+        if (DataItems == null || 
+            dct == DataClassType.Undefined)
+        {
+            throw new InvalidOperationException($"Unknown {dct.String()}, Missing Cipher?");
+        }
+
+        return BapsiCommand.GetInstance(dct, DataItems.Value);
+    }
+
     public static StringBuilder DebugByteData(StringBuilder sb, ReadOnlySpan<byte> span)
     {
         foreach (var b in span)
@@ -225,13 +231,8 @@ public class BapsiPacket
         var dct = DataClassAndType;
         if (DataItems != null && dct != DataClassType.Undefined)
         {
-            sb.Append($" CT:{dct.String()}");
-
-            if (DataItems.Value.Length != 0)
-            {
-                sb.Append(" Txt:").Append(string.Join('|', DataText.Split('\t')));
-                DebugByteData(sb.Append(" D:"), DataItems.Value.Span);
-            }
+            sb.Append($" CT:{dct.String()}")
+                .Append($" {GetCommand()}");
         }
         return sb.ToString();
     }

@@ -50,7 +50,7 @@ public class BapsiPacket
     public ReadOnlyMemory<byte>? DataItems => _dataPart?[2..];
     public string DataText => DataItems == null ? string.Empty : DataEncoding.GetString(DataItems.Value.Span);
 
-    private static readonly Encoding DataEncoding = Encoding.ASCII;
+    public static readonly Encoding DataEncoding = Encoding.ASCII;
 
     /// <summary>Pointer to encrypted data in <see cref="_packet"/></summary>
     private ReadOnlyMemory<byte> EncryptedPart => _packet[10..];

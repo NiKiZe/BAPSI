@@ -216,7 +216,7 @@ public class BapsiPacket
                 .Append(DataText).Append(" D:");
             foreach (var b in DataItems.Value.Span)
             {
-                if (char.IsLetterOrDigit((char)b))
+                if (char.IsLetterOrDigit((char)b) || b == 0x20)
                     sb.Append((char)b);
                 else sb.Append($" 0x{b:X2} ");
             }

@@ -1,4 +1,5 @@
 ﻿using BapsiNet.Packet;
+using System.Text;
 
 namespace BapsiNet.Test.Packet;
 
@@ -112,5 +113,28 @@ public class PacketTests
         Console.Out.WriteHexLine(packetBytes.Span);
         var restoreP = DecodeTest(packetBytes);
         Assert.That(restoreP.ToString(), Is.EqualTo(p.ToString()));
+    }
+
+    [Test]
+    public void VerifyEncodingTest()
+    {
+        var byteList = new List<byte>(0xff);
+        var sb = new StringBuilder(0xff);
+        for (byte b = 0x01; ; b++) // byte wraps never ends
+        {
+            var c = (char)b;
+            if (char.IsWhiteSpace(c)
+                || char.IsPunctuation(c)
+                || char.IsLetterOrDigit(c))
+            {
+                sb.Append(c);
+                byteList.Add(b);
+            }
+            if (b == 0xff) // end loop
+                break;
+        }
+
+        var encData = BapsiPacket.DataEncoding.GetString(byteList.ToArray());
+        Assert.That(encData, Is.EqualTo(sb.ToString()));
     }
 }

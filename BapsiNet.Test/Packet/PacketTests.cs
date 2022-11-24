@@ -11,9 +11,14 @@ public class PacketTests
 
     public static BapsiPacket DecodeTest(ReadOnlyMemory<byte> bytes)
     {
-        var p = new BapsiPacket(bytes);
+        return DecodeTest(new BapsiPacket(bytes), bytes);
+    }
+
+    public static BapsiPacket DecodeTest(BapsiPacket p, ReadOnlyMemory<byte>? bytes)
+    {
         Console.WriteLine(p.ToString());
-        Assert.That(p.Length, Is.EqualTo(bytes.Length - 1 - 1 - 1 - 1 - 4 - 2 - 16 - 1 - 1));
+        if (bytes.HasValue)
+            Assert.That(p.Length, Is.EqualTo(bytes.Value.Length - 1 - 1 - 1 - 1 - 4 - 2 - 16 - 1 - 1));
 
         var x = p.Cipher(DefaultKey);
         Console.Out.WriteHexLine(x);

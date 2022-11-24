@@ -50,6 +50,7 @@ public enum DataClassType : ushort
     ReadOnlyReadCardsBySelection = _ReadOnly | ApiCommonH.READONLY_TYPE_READ_CARDS_BY_SELECTION,
     ReadOnlyReadCardsByDateSelection = _ReadOnly | ApiCommonH.READONLY_TYPE_READ_CARDS_BY_DATE_SELECTION,
     ReadOnlyReadNodes = _ReadOnly | ApiCommonH.READONLY_TYPE_READ_NODES,
+    ReadOnlyReadDoors = _ReadOnly | 0x50,
 
     _System = ApiCommonH.MCLASS_SYSTEM << 8,
     SystemLogin = _System | ApiCommonH.SYSTEM_TYPE_LOGIN,
@@ -78,6 +79,7 @@ public enum DataClassType : ushort
     _MultipleResponse = ApiCommonH.MCLASS_MULTIPLE_RESPONSES << 8,
     MultipleResponseCardData = _MultipleResponse | ApiCommonH.MULTIPLE_RESPONSES_CARD_DATA,
     MultipleResponseReservation = _MultipleResponse | ApiCommonH.MULTIPLE_RESERVATION,
+    MultipleResponseDoor = _MultipleResponse | 0x50,
 }
 
 public static class DataClassTypeExtensions

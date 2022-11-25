@@ -203,6 +203,23 @@ public class BapsiPacket
         return p;
     }
 
+    public static StringBuilder DebugByteData(StringBuilder sb, ReadOnlySpan<byte> span)
+    {
+        foreach (var b in span)
+        {
+            var c = (char)b;
+            if (char.IsLetterOrDigit(c)
+                || char.IsPunctuation(c)
+                || b == 0x20)
+                sb.Append(c);
+            else sb.Append($" 0x{b:X2} ");
+        }
+
+        return sb;
+    }
+
+    public static string DebugByteData(ReadOnlySpan<byte> span) => DebugByteData(new(), span).ToString();
+
     public override string ToString()
     {
         var sb = new StringBuilder();
@@ -212,13 +229,12 @@ public class BapsiPacket
         {
             if (!Enum.IsDefined(dct))
                 sb.Append($" C:{DataClass}");
-            sb.Append($" CT:{dct.String()} Txt:")
-                .Append(DataText).Append(" D:");
-            foreach (var b in DataItems.Value.Span)
+            sb.Append($" CT:{dct.String()}");
+
+            if (DataItems.Value.Length != 0)
             {
-                if (char.IsLetterOrDigit((char)b) || b == 0x20)
-                    sb.Append((char)b);
-                else sb.Append($" 0x{b:X2} ");
+                sb.Append(" Txt:").Append(string.Join('|', DataText.Split('\t')));
+                DebugByteData(sb.Append(" D:"), DataItems.Value.Span);
             }
         }
         return sb.ToString();

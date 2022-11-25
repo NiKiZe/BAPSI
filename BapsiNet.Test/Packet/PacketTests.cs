@@ -81,7 +81,7 @@ public class PacketTests
         var p = DecodeTest(bytes);
 
         Assert.That(p.DataClassAndType, Is.EqualTo(expectedClassAndType),
-            $"{p.DataClassAndType} 0x{(ushort)p.DataClassAndType:x4} vs expected {expectedClassAndType} 0x{(ushort)expectedClassAndType:x4}");
+            $"{p.DataClassAndType.String()} vs expected {expectedClassAndType.String()}");
     }
 
     [TestCase("01 01 01 01 4e 18 d0 44  00 00 e6 dc 14 c8 9b 3b  d7 80 40 a2 f2 dd d8 44  93 26 0b bf")]

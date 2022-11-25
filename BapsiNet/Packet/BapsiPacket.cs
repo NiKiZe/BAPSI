@@ -212,7 +212,7 @@ public class BapsiPacket
         {
             if (!Enum.IsDefined(dct))
                 sb.Append($" C:{DataClass}");
-            sb.Append($" CT:{dct}(0x{(ushort)dct:x4}) Txt:")
+            sb.Append($" CT:{dct.String()} Txt:")
                 .Append(DataText).Append(" D:");
             foreach (var b in DataItems.Value.Span)
             {

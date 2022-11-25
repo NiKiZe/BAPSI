@@ -79,3 +79,8 @@ public enum DataClassType : ushort
     MultipleResponseCardData = _MultipleResponse | ApiCommonH.MULTIPLE_RESPONSES_CARD_DATA,
     MultipleResponseReservation = _MultipleResponse | ApiCommonH.MULTIPLE_RESERVATION,
 }
+
+public static class DataClassTypeExtensions
+{
+    public static string String(this DataClassType dct) => $"{dct}(0x{(ushort)dct:x4})";
+}

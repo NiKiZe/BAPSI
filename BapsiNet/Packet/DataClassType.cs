@@ -82,5 +82,6 @@ public enum DataClassType : ushort
 
 public static class DataClassTypeExtensions
 {
-    public static string String(this DataClassType dct) => $"{dct}(0x{(ushort)dct:x4})";
+    public static string String(this DataClassType dct) =>
+        $"{(Enum.IsDefined(dct) ? dct : (dct & (DataClassType)0xff00) + "+")}(0x{(ushort)dct:x4})";
 }

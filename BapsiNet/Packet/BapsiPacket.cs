@@ -29,15 +29,13 @@ public class BapsiPacket
     /// <summary>P:10 MD5 Hash 16B MD5 hash of Data class, Data type and Data E:Yes H:No</summary>
     public ReadOnlyMemory<byte> Md5 { get; private set; }
 
+#pragma warning disable IDE0052 // Keep unused private member as documentation
     /// <summary>P:26 Data class 1B  E:Yes H:Yes</summary>
     /// <remarks>Use <see cref="DataClassAndType"/> instead</remarks>
-    private DataClassType DataClass => _dataPart == null ?
-        DataClassType.Undefined :
-        (DataClassType)(_dataPart.Value[..1].Span[0] << 8);
+    private DataClassType DataClass => DataClassAndType & (DataClassType)0xff00;
 
     /// <summary>P:27 Data type 1B  E:Yes H:Yes</summary>
     /// <remarks>Use <see cref="DataClassAndType"/> instead</remarks>
-#pragma warning disable IDE0052 // Keep unused private member as documentation
     private byte DataType => _dataPart == null ? (byte)0x00 : _dataPart.Value.Slice(1, 1).Span[0];
 #pragma warning restore IDE0052
 
@@ -227,8 +225,6 @@ public class BapsiPacket
         var dct = DataClassAndType;
         if (DataItems != null && dct != DataClassType.Undefined)
         {
-            if (!Enum.IsDefined(dct))
-                sb.Append($" C:{DataClass}");
             sb.Append($" CT:{dct.String()}");
 
             if (DataItems.Value.Length != 0)

@@ -4,6 +4,8 @@
 public enum ResponseAckType : short
 {
     Ok = ApiCommonH.RESPONSES_OK,
+    Nak = 1,
+    OkUnknownData = 2,
     UnknownUser = ApiCommonH.RESPONSES_UNKNOWE_USER,
     UserNotAllowedToLogin = ApiCommonH.RESPONSES_USER_NOT_ALLOWED_TO_LOGIN,
     AlreadyLoggedIn = ApiCommonH.RESPONSES_ALREADY_LOGGED_IN,

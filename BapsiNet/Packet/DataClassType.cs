@@ -45,6 +45,8 @@ public enum DataClassType : ushort
     ApplicationGetDoorStatus = _Application | ApiCommonH.APPLICATION_TYPE_GET_DOOR_STATUS,            //Get door status
     ApplicationGetDoorName = _Application | ApiCommonH.APPLICATION_TYPE_GET_DOOR_NAME,
 
+    ApplicationReadAccessLevels = _Application | 0x4e,
+
     _ReadOnly = ApiCommonH.MCLASS_READONLY << 8,
     ReadOnlyReadAllCards = _ReadOnly | ApiCommonH.READONLY_TYPE_READ_ALL_CARDS,
     ReadOnlyReadCardsBySelection = _ReadOnly | ApiCommonH.READONLY_TYPE_READ_CARDS_BY_SELECTION,
@@ -79,6 +81,7 @@ public enum DataClassType : ushort
     _MultipleResponse = ApiCommonH.MCLASS_MULTIPLE_RESPONSES << 8,
     MultipleResponseCardData = _MultipleResponse | ApiCommonH.MULTIPLE_RESPONSES_CARD_DATA,
     MultipleResponseReservation = _MultipleResponse | ApiCommonH.MULTIPLE_RESERVATION,
+    MultipleResponseAccessLevel = _MultipleResponse | 0x32, // 0x34?
     MultipleResponseDoor = _MultipleResponse | 0x50,
 }
 

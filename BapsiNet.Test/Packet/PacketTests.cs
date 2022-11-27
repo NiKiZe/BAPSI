@@ -78,6 +78,8 @@ public class PacketTests
     [TestCase(DataClassType.SystemServerRequest, "01 01 01 01 ab f8 56 11  00 00 65 39 83 b0 59 36 b1 30 c3 7d cb af 19 a5 af e7 4b ea")]
     [TestCase(DataClassType.SingleResponseServerResponse, "01 01 01 01 21 fd 25 91 00 12  58 a9 69 71 d2 f3 cf 6a 29 f0 c6 21 f8 a3 32 70  c2 f0 a3 bc 2b f2 c0 9b fe 25 9b d4 93 35 d6 46  4d e9 d8 b0")]
     [TestCase(DataClassType.MultipleResponseDoor, "01 01 01 01 47 4c ce fe  00 10 4a e4 eb f2 f8 39  d3 6b 1d c7 e3 9a 2a 78  a3 22 46 87 f8 82 30 66  e3 f7 23 30 fc 3c 2d 17  8f 65 1b b6")]
+    [TestCase(DataClassType.ApplicationReadAccessLevels, "01 01 01 01 d1 81 c7 9e  00 00 88 85 be d4 0e 4d a0 84 b9 04 4a af 46 87 ef 71 3f 2e")]
+    [TestCase(DataClassType.MultipleResponseAccessLevel, "01 01 01 01 48 eb d1 e3  00 0e 8f 35 28 b6 8a 56 e3 0f 1d 26 b7 8e 44 7e b7 75 23 b3 14 04 3a ae  22 20 a5 31 b7 19 eb fc  1d c8")]
     public void DecodeWithTypeTest(DataClassType expectedClassAndType, string data)
     {
         Memory<byte> bytes = Tools.HexStringToBytes(data).ToArray();
